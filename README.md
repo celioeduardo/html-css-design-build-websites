@@ -3,7 +3,7 @@
 ![](imgs/capa.jpg)
 
 http://www.htmlandcssbook.com/code-samples/
-http://www.htmlandcssbook.com/extras/resizing-and-saving-images-for-the-web/
+http://www.htmlandcssbook.com/extras/
 
 ##1. STRUCTURE
 
@@ -150,7 +150,7 @@ Browsers often display the content of the ```<address>``` element in italics.
 You may also be interested in something called the *hCard* microformat for adding physical address information to your markup.
 
 **ONLINE EXTRA**:
-You can find out more about hCards on the website accompanying this book.
+You can find out more about hCards on the website accompanying this book. http://www.htmlandcssbook.com/extras/
 
 ###CHANGES TO CONTENT
 
@@ -260,9 +260,8 @@ Images can be used to set the tone for a site in less time than it takes to read
 * http://www.fotolia.com
 
 ####ONLINE EXTRA
-http://www.htmlandcssbook.com/extras/
 
-We have provided an online gallery that helps you choose the right image for your website. You can find it in the tools section of the site accompanying this book.
+We have provided an online gallery that helps you choose the right image for your website. You can find it in the tools section of the site accompanying this book. http://www.htmlandcssbook.com/extras/
 
 ###HEIGHT & WIDTH OF IMAGES
 
@@ -333,7 +332,7 @@ There are three rules to remember when you are creating images for your website 
 * http://www.ipiccy.com
 
 #####ONLINE EXTRA
-Watch videos that demonstrate how to resize images and save them in the correct format using both of these applications.
+Watch videos that demonstrate how to resize images and save them in the correct format using both of these applications.  http://www.htmlandcssbook.com/extras/
 
 #####JPEG Images
 Whenever you have many different colors in a picture you should use a JPEG. A photograph that features snow or an overcast sky might look like it has large areas that are just white or gray, but the picture is usually made up of many different colors that are subtly different.
@@ -349,7 +348,7 @@ The images you use on your website should be saved at the same width and height 
 For example, if you have designed a page to include an image that is 300 pixels wide by 150 pixels tall, the image you use should be 300 × 150 pixels. You may need to use image editing tools to resize and crop the image. When sourcing images, it is important to understand how you can alter the dimensions of an image; imagine that you had designed a web page to include an image that is 300 pixels wide by 150 pixels tall:
 
 #####ONLINE EXTRA
-Visit the tools section of the website accompanying this book to watch a video guide to resizing images in Photoshop and GIMP.
+Visit the tools section of the website accompanying this book to watch a video guide to resizing images in Photoshop and GIMP.  http://www.htmlandcssbook.com/extras/
 
 #####REDUCING IMAGE SIZE
 You can reduce the size of images to create a smaller version of the image.
@@ -443,3 +442,376 @@ The ```<img>``` element is used to add images to a web page.
 You must always specify a src attribute to indicate the source of an image and an alt attribute to describe the content of an image.
 You should save images at the size you will be using them on the web page and in the appropriate format.
 Photographs are best saved as JPEGs; illustrations or logos that use flat colors are better saved as GIFs.
+
+##6. TABLES
+
+###SPANNING COLUMNS
+
+Sometimes you may need the entries in a table to stretch across more than one column.
+
+The colspan attribute can be used on a ```<th>``` or ```<td>``` element and indicates how many columns that cell should run across.
+In the example on the right you can see a timetable with five columns; the first column contains the heading for that row (the day), the remaining four represent one hour time slots.
+
+If you look at the table cell that contains the words ‘Geography’ you will see that the value of the colspan attribute is 2, which indicates that the cell should run across two columns. In the third row, ‘Gym’ runs across three columns.
+
+![](imgs/ch6 - table spanning columns.jpg)
+![](imgs/ch6 - table spanning columns result.jpg)
+
+You can see that the second and third rows have fewer ```<td>``` elements than there are columns. This is because, when a cell extends across more than one column, the ```<td>``` or ```<th>``` cells that would have been in the place of the wider cells are not included in the code.
+
+###SPANNING ROWS
+
+You may also need entries in a table to stretch down across more than one row.
+
+The rowspan attribute can be used on a ```<th>``` or ```<td>``` element to indicate how many rows a cell should span down the table.
+
+In the example on the left you can see that ABC is showing a movie from 6pm - 8pm, whereas the BBC and CNN channels are both showing two programs during this time period (each of which lasts one hour).
+
+If you look at the last ```<tr>``` element, it only contains three elements even though there are four columns in the result below. This is because the movie in the ```<tr>``` element above it uses the rowspan attribute to stretch down and take over the cell below.
+
+![](imgs/ch6 - table spanning rows.jpg)
+![](imgs/ch6 - table spanning rows result.jpg)
+
+###LONG TABLES
+
+There are three elements that help distinguish between the main content of the table and the first and last rows (which can contain different content).
+
+![](imgs/ch6 - long tables.jpg)
+
+These elements help people who use screen readers and also allow you to style these sections in a different manner than the rest of the table (as you will see when you learn about CSS).
+
+####**```<thead>```**
+The headings of the table should sit inside the ```<thead>``` element.
+
+####**```<tbody>```**
+The body should sit inside the ```<tbody>``` element.
+
+####**```<tfoot>```**
+The footer belongs inside the ```<tfoot>``` element.
+
+By default, browsers rarely treat the content of these elements any differently than other elements however designers often use CSS styles to change their appearance.
+Some of the HTML editors that come in content management systems offer tools to help draw tables. If the first row of your table only contains ```<th>``` elements then you may find that the editor inserts a ```<thead>``` element automatically.
+
+![](imgs/ch6 - long tables result.jpg)
+
+Part of the reason for having separate ```<thead>``` and ```<tfoot>``` elements is so that, if you have a table that is taller than the screen (or, if printed, longer than one page) then the browser can keep the header and footer visible whilst the contents of the table scroll. This is intended to make it easier for users to see which column the data is in (however this functionality is not implemented by default in any current browser).
+
+###OLD CODE: WIDTH & SPACING
+There are some outdated attributes which you should not use on new websites.  
+All of these attributes have been replaced by the use of CSS.
+
+###OLD CODE: BORDER & BACKGROUND
+When building a new website you should use CSS to control the appearance of the table rather than these attributes.
+
+###SUMMARY TABLES
+* The ```<table>``` element is used to add tables to a web page.
+* A table is drawn out row by row. Each row is created with the ```<tr>``` element.
+* Inside each row there are a number of cells represented by the ```<td>``` element (or ```<th>``` if it is a header).
+* You can make cells of a table span more than one row or column using the rowspan and colspan attributes.
+* For long tables you can split the table into a ```<thead>```, ```<tbody>```, and ```<tfoot>```.
+
+##7. FORMS
+
+###LABELLING FORM CONTROLS
+
+####**```<label>```**
+
+When introducing form controls, the code was kept simple by indicating the purpose of each one in text next to it. However, each form control should have its own ```<label>``` element as this makes the form accessible to vision-impaired users.
+
+The ```<label>``` element can be used in two ways. It can:
+* Wrap around both the text description and the form input (as shown on the first line of the example to your right).
+* Be kept separate from the form control and use the for attribute to indicate which form control it is a label for (as shown with the radio buttons).
+
+####**```for```**
+
+The for attribute states which form control the label belongs to. Note how the radio buttons use the id attribute. The value of the id attribute uniquely identifies an element from all other elements on a page. (The id attribute is covered on page 183.)
+
+The value of the for attribute matches that of the id attribute on the form control it is labelling. This technique using the for and id attributes can be used on any form control. When a ```<label>``` element is used with a checkbox or radio button, users can click on either the form control or the label to select. The expanded clickable area makes the form easier to use. The position of the label is very important. If users do not know where to enter information or what information to enter, they are less likely to use the form correctly.
+
+![](imgs/ch7 - label.jpg)
+![](imgs/ch7 - label result.jpg)
+
+As a rule of thumb, here are the best places to place labels on form controls.
+
+**ABOVE OR TO THE LEFT**:
+* Text inputs
+* Text areas
+* Select boxes
+* File uploads
+
+**TO THE RIGHT**:
+* Individual checkboxes
+* Individual radio buttons
+
+###GROUPING FORM ELEMENTS
+![](imgs/ch7 - group form.jpg)
+![](imgs/ch7 - group form result.jpg)
+
+####**```<fieldset>```**
+You can group related form controls together inside the ```<fieldset>``` element. This is particularly helpful for longer forms.
+
+Most browsers will show the fieldset with a line around the edge to show how they are related. The appearance of these lines can be adjusted using CSS.
+####**```<legend>```**
+
+The ```<legend>``` element can come directly after the opening ```<fieldset>``` tag and contains a caption which helps identify the purpose of that group of form controls.
+
+###HTML5: FORM VALIDATION
+
+Traditionally, form validation has been performed using JavaScript (which is beyond the scope of this book). But HTML5 is introducing validation and leaving the work to the browser.
+
+![](imgs/ch7 - html5 validation.jpg)
+![](imgs/ch7 - html5 validation result.jpg)
+
+An example of HTML5 form validation is the required attribute, which can be used on any form element that the user is expected to fill in. This HTML5 attribute does not need a value, but in HTML 4 all attributes must have a value. So, some people give this attribute a value of required.
+
+###HTML5: DATE INPUT
+
+![](imgs/ch7 - html5 date input.jpg)
+![](imgs/ch7 - html5 date input result.jpg)
+
+####**```type=“date”```**
+If you are asking the user for a date, you can use an ```<input>``` element and give the type attribute a value of date. This will create a date input in browsers that support the new HMTL5 input types.
+This example shows what the date input looks like in the Opera browser. The appearance of the date input changes across different browsers.
+
+###HTML5: EMAIL & URL INPUT
+
+####**```type=“email”```**
+If you ask a user for an email address, you can use the email input. Browsers that support HTML5 validation will check that the user has provided information in the correct format of an email address. Some smart phones also optimize their keyboard to display the keys you are most likely to need when entering an email address (such as the @ symbol).
+
+![](imgs/ch7 - html5 email input.jpg)
+![](imgs/ch7 - html5 email input result.jpg)
+
+####**```type=“url”```**
+A URL input can be used when you are asking a user for a web page address. Browsers that support HTML5 validation will check that the user has provided information in the format of a URL. Some smart phones also optimize their keyboard to display the keys you are most likely to need when entering a URL.
+
+![](imgs/ch7 - html5 url input.jpg)
+![](imgs/ch7 - html5 url input result.jpg)
+
+###HTML5: SEARCH INPUT
+
+####**```type=“search”```**
+
+If you want to create a single line text box for search queries, HTML5 provides a special search input.
+
+To create the HTML5 search box the ```<input>``` element should have a ```type``` attribute whose ```value``` is search. Older browsers will simply treat it like a single line text box.
+
+Recent browsers add some features that improve usability. For example, Safari on a Mac adds a cross to clear the search box when you have started to enter information. Safari also automatically rounds the corners on the search input field.
+
+![](imgs/ch7 - html5 search input.jpg)
+![](imgs/ch7 - html5 search input result.jpg)
+
+####**```placeholder```**
+
+On any text input, you can also use an attribute called ```placeholder``` whose value is text that will be shown in the text box until the user clicks in that area. Older browsers simply ignore this attribute.
+
+![](imgs/ch7 - html5 placeholder.jpg)
+![](imgs/ch7 - html5 placeholder result.jpg)
+
+###SUMMARY FORMS
+* Whenever you want to collect information from visitors you will need a form, which lives inside a ```<form>``` element.
+* Information from a form is sent in name/value pairs.
+* Each form control is given a name, and the text the user types in or the values of the options they select are sent to the server.
+* HTML5 introduces new form elements which make it easier for visitors to fill in forms.
+
+##8. EXTRA MARKUP
+
+###DOCTYPES
+Because there have been several versions of HTML, each web page should begin with a DOCTYPE declaration to tell a browser which version of HTML the page is using (although browsers usually display the page even if it is not included). 
+
+As you will see when we come to look at CSS and its box model on page 316, the use of a DOCTYPE can also help the browser to render a page correctly.
+
+Because XHTML was written in XML, you will sometimes see pages that use the XHTML strict DOCTYPE start with the optional XML declaration. Where this is used, it should be the first thing in a document. There must be nothing before it, not even a space.
+
+![](imgs/ch8 - doctypes.jpg)
+
+###ID ATTRIBUTE
+
+Every HTML element can carry the id attribute. It is used to uniquely identify that element from other elements on the page. Its value should start with a letter or an underscore (not a number or any other character). **It is important that no two elements on the same page have the same value for their id attributes** (otherwise the value is no longer unique).
+
+As you will see when you come to look at CSS in the next section, giving an element a unique identity allows you to style it differently than any other instance of the same element on the page. For example, you might want to assign one paragraph within the page (perhaps a paragraph containing a pull quote) a different style than all of the other paragraphs. In the example on the right, the paragraph with the id attribute whose value is pullquote is made uppercase using CSS.
+
+If you go on to learn about JavaScript (a language that allows you to add interactivity to your pages), id attributes can be used to allow the script to work with that particular element.
+
+The id attribute is known as a **global attribute** because it can be used on any element.
+
+![](imgs/ch8 - id attribute.jpg)
+![](imgs/ch8 - id attribute result.jpg)
+
+###CLASS ATTRIBUTE
+
+![](imgs/ch8 - class attribute.jpg)
+![](imgs/ch8 - class attribute result.jpg)
+
+Every HTML element can also carry a class attribute. Sometimes, rather than uniquely identifying one element within a document, you will want a way to identify several elements as being different from the other elements on the page. For example, you might have some paragraphs of text that contain information that is more important than others and want to distinguish these elements, or you might want to differentiate between links that point to other pages on your own site and links that point to external sites.
+
+To do this you can use the ```class``` attribute. Its ```value``` should describe the ```class``` it belongs to. In the example on the left, key paragraphs have a ```class``` attribute whose ```value``` is ```important```.
+
+The ```class``` attribute on any element can share the same value. So, in this example, the value of ```important``` could be used on headings and links, too.
+
+By default, using these attributes does not affect the presentation of an element. It will only change their appearance if there is a CSS rule that indicates it should be displayed differently.
+
+In this example, CSS has been applied to make elements with a ```class``` attribute whose value is ```important``` uppercase, and elements with a ```class``` attribute whose value is ```admittance``` red.
+
+If you would like to indicate that an element belongs to several classes, you can separate ```class``` names with a space, as you can see in the third paragraph in the example above.
+
+###BLOCK ELEMENTS
+Some elements will always appear to start on a new line in the browser window. These are known as **block level** elements.
+
+![](imgs/ch8 - block element.jpg)
+
+Examples of block elements are ```<h1>```, ```<p>```, ```<ul>```, and ```<li>```.
+
+![](imgs/ch8 - block elements.jpg)
+![](imgs/ch8 - block elements result.jpg)
+
+###INLINE ELEMENTS
+
+![](imgs/ch8 - inline elements.jpg)
+![](imgs/ch8 - inline elements result.jpg)
+
+Some elements will always appear to continue on the same line as their neighbouring elements. These are known as **inline** elements.
+
+![](imgs/ch8 - inline element.jpg)
+
+Examples of inline elements are ```<a>```, ```<b>```, ```<em>```, and ```<img>```.
+
+###GROUPING TEXT & ELEMENTS IN A BLOCK
+
+####**```<div>```**
+
+The ```<div>``` element allows you to group a set of elements together in one block-level box.
+
+For example, you might create a ```<div>``` element to contain all of the elements for the header of your site (the logo and the navigation), or you might create a ```<div>``` element to contain comments from visitors.
+
+In a browser, the contents of the ```<div>``` element will start on a new line, but other than this it will make no difference to the presentation of the page.
+
+Using an id or class attribute on the ```<div>``` element, however, means that you can create CSS style rules to indicate how much space the ```<div>``` element should occupy on the screen and change the appearance of all the elements contained within it.
+
+It can also make it easier to follow your code if you have used ```<div>``` elements to hold each section of the page.
+
+![](imgs/ch8 - div element.jpg)
+![](imgs/ch8 - div element result.jpg)
+
+###GROUPING TEXT & ELEMENTS INLINE
+
+![](imgs/ch8 - span element.jpg)
+![](imgs/ch8 - span element result.jpg)
+
+####**```<span>```**
+
+The ```<span>``` element acts like an inline equivalent of the ```<div>``` element. It is used to either:
+
+* Contain a section of text where there is no other suitable element to differentiate it from its surrounding text
+* Contain a number of inline elements
+
+The most common reason why people use ```<span>``` elements is so that they can control the appearance of the content of these elements using CSS.
+
+You will usually see that a class or id attribute is used with ```<span>``` elements:
+* To explain the purpose of this ```<span>``` element
+* So that CSS styles can be applied to elements that have specific values for these attributes
+
+###IFRAMES
+
+####**```<iframe>```**
+An iframe is like a little window that has been cut into your page — and in that window you can see another page. The term iframe is an abbreviation of inline frame.
+One common use of iframes (that you may have seen on various websites) is to embed a Google Map into a page. The content of the iframe can be any html page (either located on the same server or anywhere else on the web).
+An iframe is created using the ```<iframe>``` element. There are a few attributes that you will need to know to use it:
+
+**```src```**
+
+The src attribute specifies the URL of the page to show in the frame.
+
+**```height```**
+
+The height attribute specifies the height of the iframe in pixels.
+
+**```width```**
+
+The width attribute specifies the width of the iframe in pixels.
+
+![](imgs/ch8 - iframe.jpg)
+![](imgs/ch8 - iframe result.jpg)
+
+**```scrolling```** (NOT SUPPORTED IN HTML5)
+
+The scrolling attribute will not be supported in HTML5. In HTML 4 and XHTML, it indicates whether the iframe should have scrollbars or not. This is important if the page inside the iframe is larger than the space you have allowed for it (using the height and width attributes). Scrollbars allow the user to move around the frame to see more content. It can take one of three values: yes (to show scrollbars), no (to hide scrollbars) and auto (to show them only if needed).
+
+**```frameborder```** (NOT SUPPORTED IN HTML5)
+
+The frameborder attribute will not be supported in HTML5. In HTML 4 and XHTML, it indicates whether the frame should have a border or not. A value of 0 indicates that no border should be shown. A value of 1 indicates that a border should be shown.
+
+**```seamless```**
+
+In HTML5, a new attribute called seamless can be applied to an iframe where scrollbars are not desired. The seamless attribute (like some other new HTML5 attributes) does not need a value, but you will often see authors give it a value of seamless. Older browsers do not support the seamless attribute.
+
+###INFORMATION ABOUT YOUR PAGES
+
+####**```<meta>```**
+The ```<meta>``` element lives inside the ```<head>``` element and contains information about that web page.
+
+It is not visible to users but fulfills a number of purposes such as telling search engines about your page, who created it, and whether or not it is time sensitive. (If the page is time sensitive, it can be set to expire.)
+
+The ```<meta>``` element is an empty element so it does not have a closing tag. It uses attributes to carry the information.
+
+The most common attributes are the ```name``` and ```content``` attributes, which tend to be used together. These attributes specify properties of the entire page. The value of the ```name``` attribute is the property you are setting, and the value of the ```content``` attribute is the value that you want to give to this property.
+
+In the first line of the example on the opposite page, you can see a ```<meta>``` element where the ```name``` attribute indicates an intention to specify a description for the page. The ```content``` attribute is where this description is actually specified.
+
+The value of the ```name``` attribute can be anything you want it to be. Some defined values for this attribute that are commonly used are:
+
+**```description```**
+
+This contains a description of the page. This description is commonly used by search engines to understand what the page is about and should be a maximum of 155 characters. Sometimes it is also displayed in search engine results.
+
+**```keywords```**
+
+This contains a list of commaseparated words that a user might search on to find the page. In practice, this no longer has any noticeable effect on how search engines index your site.
+
+**```robots```**
+
+This indicates whether search engines should add this page to their search results or not. A value of **```noindex```** can be used if this page should not be added. A value of **```nofollow```** can be used if search engines should add this page in their results but not any pages that it links to.
+
+![](imgs/ch8 - metas.jpg)
+
+The ```<meta>``` element also uses the http-equiv and content attributes in pairs. In our example, you can see three instances of the http-equiv attribute. Each one has a different purpose:
+
+**```author```**
+
+This defines the author of the web page.
+
+**```pragma```**
+
+This prevents the browser from caching the page. (That is, storing it locally to save time downloading it on subsequent visits.)
+
+**```expires```**
+
+Because browsers often cache the content of a page, the expires option can be used to indicate when the page should expire (and no longer be cached). Note that the date must be specified in the format shown.
+
+
+###ESCAPE CHARACTERS
+
+There are some characters that are used in and reserved by HTML code. (For example, the left and right angled brackets.)
+
+Therefore, if you want these characters to appear on your page you need to use what are termed “escape” characters (also known as escape codes or entity references). For example, to write a left angled bracket, you can use either ```&lt;``` or ```&#60;```. For an ampersand, you can use either ```&amp;``` or ```&#38;```.
+
+There are also special codes that can be used to show symbols such as copyright and trademark, currency symbols, mathematical characters, and some punctuation marks. For example, if you want to include a copyright symbol on a web page you can use either ```&copy;``` or ```&#169;```.
+
+When using escape characters, it is important to check the page in your browser to ensure that the correct symbol shows up. This is because some fonts do not support all of these characters and you might therefore need to specify a different font for these characters in your CSS code.
+
+####ONLINE EXTRA
+You can find a more complete list of escape codes in the tools section of the website accompanying this book. http://www.htmlandcssbook.com/extras/html-escape-codes/
+
+![](imgs/ch8 - escape characters.jpg)
+
+###SUMMARY EXTRA MARKUP
+
+* DOCTYPES tell browsers which version of HTML you are using.
+* You can add comments to your code between the <!- - and --> markers.
+* The id and class attributes allow you to identify particular elements.
+* The ```<div>``` and ```<span>``` elements allow you to group block-level and inline elements together.
+* ```<iframes>``` cut windows into your web pages through which other pages can be * displayed.
+* The ```<meta>``` tag allows you to supply all kinds of information about your web page.
+* Escape characters are used to include special characters in your pages such as <, >, and ©.
+
+##10. INTRODUCING CSS
+
