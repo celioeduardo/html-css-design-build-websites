@@ -895,3 +895,51 @@ If one selector is more specific than the others, the more specific rule will ta
 You can add ```!important``` after any property value to indicate that it should be considered more important than other rules that apply to the same element.
 
 Understanding how CSS rules cascade means you can write simpler style sheets because you can create generic rules that apply to most elements and then override the properties on individual elements that need to appear differently.
+
+###INHERITANCE
+
+If you specify the ```font-family``` or ```color``` properties on the ```<body>``` element, they will apply to most child elements. This is because the value of the ```font-family``` property is **inherited** by child elements. It saves you from having to apply these properties to as many elements (and results in simpler style sheets).
+
+![](imgs/ch10 - css inheritance html.jpg)
+![](imgs/ch10 - css inheritance css.jpg)
+![](imgs/ch10 - css inheritance result.jpg)
+
+You can compare this with the background-color or border properties; they are **not inherited** by child elements. If these were inherited by all child elements then the page could look quite messy.
+
+You can force a lot of properties to inherit values from their parent elements by using inherit for the value of the properties. In this example, the ```<div>``` element with a class called page inherits the padding size from the CSS rule that applies to the ```<body>``` element.
+
+###DIFFERENT VERSIONS OF CSS & BROWSER QUIRKS
+
+You do not need lots of computers to test your site, as there are online tools to show you what a page looks like in multiple browsers:
+
+http://browsercam.com
+
+http://BrowserLab.Adobe.com
+
+http://BrowserShots.org
+
+http://CrossBrowserTesting.com
+
+Using these tools, it is a good idea to check the site on different operating systems (PC, Mac, and Linux) and in older versions of the major browsers, as well as recent versions.
+
+When you look at your site in more than one browser, you might find that some elements on your page do not look as you expect them to.
+
+When a CSS property does not display as expected, it is generally referred to as a **browser quirk** or **CSS bug**.
+
+If you come across a CSS bug, you can use your favorite search engine to try and find a solution. Or you can check these sites:
+* http://PositionIsEverything.net
+* http://QuirksMode.org
+
+###SUMMARY
+####INTRODUCING CSS
+* CSS treats each HTML element as if it appears inside its own box and uses rules to indicate how that element should look.
+
+* Rules are made up of selectors (that specify the elements the rule applies to) and declarations (that indicate what these elements should look like).
+
+* Different types of selectors allow you to target your rules at different elements.
+
+* Declarations are made up of two parts: the properties of the element that you want to change, and the value of those properties. For example, the font-family property sets the choice of font, and the value arial specifies Arial as the preferred typeface.
+
+* CSS rules usually appear in a separate document, although they may appear within an HTML page.
+
+##11. COLOR
