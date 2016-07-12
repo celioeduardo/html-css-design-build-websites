@@ -429,12 +429,18 @@ Images often come with captions. HTML5 has introduced a new ```<figure>``` eleme
 
 You can have more than one image inside the ```<figure>``` element as long as they all share the same caption.
 
-```<figcaption>```
+**```<figcaption>```**
+
 The ```<figcaption>``` element has been added to HTML5 in order to allow web page authors to add a caption to an image.
+
 Before these elements were created there was no way to associate an ```<img>``` element with its caption.
+
 Older browsers that do not understand HTML5 elements simply ignore the new elements and display the content of them.
+
 In this example, the logo is a GIF because it uses flat colors, while the photographs are JPEGs. The main photo is placed inside the HTML5 ```<figure>``` element and has its own caption.
+
 The alt attribute on each image provides a description for those using screen readers and the title attribute provides additional information. (This is shown in the tooltip.)
+
 This example does not use the ```height```, ```width```, or ```align``` attributes as these are being phased out and you are encouraged to use CSS properties instead.
 
 ###SUMMARY IMAGES
