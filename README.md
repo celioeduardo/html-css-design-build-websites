@@ -821,3 +821,77 @@ You can find a more complete list of escape codes in the tools section of the we
 
 ##10. INTRODUCING CSS
 
+###UNDERSTANDING CSS: THINKING INSIDE THE BOX
+
+The key to understanding how CSS works is to imagine that there is an invisible box around every HTML element.
+
+On this page, you can see a basic HTML page.
+
+On the right hand page, you can see the same HTML page, but I have added outlines to each of the elements so that you can see how CSS will treat each element as if it lives inside its own box.
+
+![](imgs/ch10 - box element.jpg)
+
+###BLOCK & INLINE ELEMENTS
+
+Block level elements look like they start on a new line. Examples include the ```<h1>-<h6>```, ```<p>``` and ```<div>``` elements.
+Inline elements flow within the text and do not start on a new line. Examples include ```<b>```, ```<i>```, ```<img>```, ```<em>``` and ```<span>```.
+
+CSS allows you to create rules that control the way that each individual box (and the contents of that box) is presented.
+
+In this example, block level elements are shown with red borders, and inline elements have green borders.
+
+![](imgs/ch10 - box element outlined.jpg)
+
+The ```<body>``` element creates the first box, then the ```<h1>```, ```<h2>```, ```<p>```, ```<i>```, and ```<a>``` elements each create their own boxes within it.
+
+Using CSS, you could add a border around any of the boxes, specify its width and height, or add a background color. You could also control text inside a box — for example, its color, size, and the typeface used.
+
+###EXAMPLE STYLES
+
+####BOXES
+* Width and height
+* Borders (color, width, and style)
+* Background color and images
+* Position in the browser window.
+
+####TEXT
+* Typeface
+* Size
+* Color
+* Italics, bold, uppercase, lowercase, small-caps
+
+####SPECIFIC
+* There are also specific ways in which you can style certain elements such as lists, tables, and forms.
+
+###CSS SELECTORS
+
+The table on the opposite page introduces the most commonly used CSS selectors.
+
+There are some more advanced selectors which allow you to select elements based on attributes and their values, which you will see on page 292.
+
+![](imgs/ch10 - common css selectors.jpg)
+
+###HOW CSS RULES CASCADE
+
+If there are two or more rules that apply to the same element, it is important to understand which will take precedence.
+
+####LAST RULE
+If the two selectors are identical, the latter of the two will take precedence. Here you can see the second i selector takes precedence over the first.
+
+####SPECIFICITY
+If one selector is more specific than the others, the more specific rule will take precedence over more general ones. In this example:
+
+```h1``` is more specific than ```*```
+
+```p b``` is more specific than ```p```
+
+```p#intro``` is more specific than ```p```
+
+![](imgs/ch10 - css rules cascade html.jpg)
+![](imgs/ch10 - css rules cascade css.jpg)
+![](imgs/ch10 - css rules cascade result.jpg)
+
+####IMPORTANT
+You can add ```!important``` after any property value to indicate that it should be considered more important than other rules that apply to the same element.
+
+Understanding how CSS rules cascade means you can write simpler style sheets because you can create generic rules that apply to most elements and then override the properties on individual elements that need to appear differently.
