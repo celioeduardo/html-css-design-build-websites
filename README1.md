@@ -480,11 +480,11 @@ When pseudo-classes are used, they should appear in this order:
 4. ```:focus```
 5. ```:active```
 
-###ATTRIBUTE SELECTORS
+### ATTRIBUTE SELECTORS
 
 There are also a set of attribute selectors that allow you to create rules that apply to elements that have an attribute with a specific value.
 
-###SUMMARY TEXT
+### SUMMARY TEXT
 * There are properties to control the choice of font, size, weight, style, and spacing.
 * There is a limited choice of fonts that you can assume most people will have installed.
 * If you want to use a wider range of typefaces there are several options, but you need to have the right license to use them.
@@ -493,3 +493,319 @@ There are also a set of attribute selectors that allow you to create rules that 
 
 ## 13. BOXES
 
+### BOX DIMENSIONS
+
+![](imgs/ch13 - width height html.jpg)
+![](imgs/ch13 - width height css.jpg)
+![](imgs/ch13 - width height result.jpg)
+
+####```width```, ```height```
+
+By default a box is sized just big enough to hold its contents. To set your own dimensions for a box you can use the height and width properties.
+
+The most popular ways to specify the size of a box are to use pixels, percentages, or ems. 
+
+Traditionally, **pixels** have been the most popular method because they allow designers to accurately control their size.
+
+When you use **percentages**, the size of the box is relative to the size of the browser window or, if the box is encased within another box, it is a percentage of the size of the containing box.
+
+When you use **ems**, the size of the box is based on the size of text within it. Designers have recently started to use percentages and ems more for measurements as they try to create designs that are flexible across devices which have different-sized screens.
+
+In the example, you can see that a containing ```<div>``` element is used which is 300 pixels wide by 300 pixels high. Inside of this is a paragraph that is 75% of the width and height of the containing element. This means that the size of the paragraph is 225 pixels wide by 225 pixels high.
+
+### LIMITING WIDTH
+
+#### ```min-width```, ```max-width```
+
+Some page designs expand and shrink to fit the size of the user's screen. In such designs, the min-width property specifies the smallest size a box can be displayed at when the browser window is narrow, and the max-width property indicates the maximum width a box can stretch to when the browser window is wide.
+
+You can use the max-width property to ensure that lines of text do not appear too wide within a big browser window and you can use the min-width property to make sure that they do not appear too narrow
+
+### LIMITING HEIGHT
+
+#### ```min-height```, ```max-height```
+
+![](imgs/ch13 - min-height max-height html.jpg)
+![](imgs/ch13 - min-height max-height css.jpg)
+![](imgs/ch13 - min-height max-height result.jpg)
+
+The example on this page demonstrates these properties in action. It also shows you what happens when the content of the box takes up more space than the size specified for the box.
+
+If the box is not big enough to hold the content, and the content expands outside the box it can look very messy. To control what happens when there is not enough space for the content of a box, you can use the **overflow** property.
+
+### OVERFLOWING CONTENT
+
+#### ```overflow```
+
+![](imgs/ch13 - overflow html.jpg)
+![](imgs/ch13 - overflow css.jpg)
+![](imgs/ch13 - overflow result.jpg)
+
+The ```overflow``` property tells the browser what to do if the content contained within a box is larger than the box itself. It can have one of two values:
+
+**```hidden```** - This property simply hides any extra content that does not fit in the box.
+
+**```scroll```** - This property adds a scrollbar to the box so that users can scroll to see the missing content.
+
+The overflow property is particularly handy because some browsers allow users to adjust the size of the text to appear as large or as small as they want. If the text is set too large then the page can become an unreadable mess. Hiding the overflow on such boxes helps prevent items overlapping on the page.
+
+## BORDER, MARGIN & PADDING
+
+Every box has three available properties that can be adjusted to control its appearance:
+
+![](imgs/ch13 - 1 border.jpg) **BORDER** - Every box has a border (even if it is not visible or is specified to be 0 pixels wide). The border separates the edge of one box from another.
+
+![](imgs/ch13 - 2 margin.jpg) **MARGIN** - Margins sit outside the edge of the border. You can set the width of a margin to create a gap between the borders of two adjacent boxes.
+
+![](imgs/ch13 - 3 padding.jpg) **PADDING** - Padding is the space between the border of a box and any content contained within it. Adding padding can increase the readability of its contents.
+
+If you specify a width for a box, then the **borders**, **margin**, and **padding** are **added** to its **width** and **height**.
+
+![](imgs/ch13 - border margin padding.jpg)
+
+## WHITE SPACE & VERTICAL MARGIN
+
+![](imgs/ch13 - white space and vertical margin.jpg)
+
+The ```padding``` and ```margin``` properties are very helpful in adding space between various items on the page
+
+Designers refer to the space between items on a page as white space. Imagine you had a border around a box. You would not want the text to touch this border or it would become harder to read.
+
+Or, imagine you had two boxes sitting side by side (each with a black border). You would not necessarily want the boxes to touch edges as this would make the line look twice as thick on the facing sides.
+
+If the bottom margin of any box touches the top margin of another, the browser will render it differently than you might expect. It will only show the larger of the two margins. If both margins are the same size, it will only show one.
+
+### BORDER WIDTH
+
+#### ```border-width```
+
+The ```border-width``` property is used to control the width of a border. The value of this property can either be given in pixels or using one of the following values:
+
+* thin
+* medium
+* thick
+
+**(You cannot use percentages with this property.)**
+
+You can control the individual size of borders using four separate properties:
+* border-top-width
+* border-right-width
+* border-bottom-width
+* border-left-width
+
+You can also specify different widths for the four border values in one property, like so:
+```border-width: 2px 1px 1px 2px;```
+
+The values here appear in clockwise order: top, right, bottom, left.
+
+### BORDER STYLE
+
+#### ```border-style```
+
+![](imgs/ch13 - border style html.jpg)
+![](imgs/ch13 - border style css.jpg)
+![](imgs/ch13 - border style result.jpg)
+
+You can control the style of a border using the border-style property. This property can take the following values:
+
+* **solid** a single solid line
+* **dotted** a series of square dots (if your border is 2px wide, then the dots are 2px squared with a 2px gap between each dot)
+* **dashed** a series of short lines
+* **double** two solid lines (the value of the border-width property creates the sum of the two lines)
+* **groove** appears to be carved into the page
+* **ridge** appears to stick out from the page
+* **inset** appears embedded into the page
+* **outset** looks like it is coming out of the screen
+* **hidden / none** no border is shown
+You can individually change the styles of different borders using:
+* **border-top-style**
+* **border-left-style**
+* **border-right-style**
+* **border-bottom-style**
+
+### BORDER COLOR
+
+#### ```border-color```
+You can specify the color of a border using either RGB values, hex codes or CSS color names (as you saw on pages 251-252).
+
+It is possible to individually control the colors of the borders on different sides of a box using:
+* border-top-color
+* border-right-color
+* border-bottom-color
+* border-left-color
+
+It is also possible to use a shorthand to control all four border colors in the one property:
+```border-color: darkcyan deeppink darkcyan deeppink;```
+
+The values here appear in clockwise order: top, right, bottom, left.
+You could also use HSL values to specify the color. However, these were only introduced in CSS3 and will not work in older browsers.
+
+### SHORTHAND
+
+#### ```border```
+
+![](imgs/ch13 - border shorthand html.jpg)
+![](imgs/ch13 - border shorthand css.jpg)
+![](imgs/ch13 - border shorthand result.jpg)
+
+The border property allows you to specify the ```width```, ```style``` and ```color``` of a border in one property (and the values should be coded in that specific order).
+
+### PADDING
+
+#### ```padding```
+
+![](imgs/ch13 - padding html.jpg)
+![](imgs/ch13 - padding css.jpg)
+![](imgs/ch13 - padding result.jpg)
+
+The padding property allows you to specify how much space should appear between the content of an element and its border.
+
+The value of this property is most often specified in pixels (although it is also possible to use percentages or ems). If a percentage is used, the padding is a percentage of the browser window (or of the containing box if it is inside another box).
+
+Please note: If a width is specified for a box, padding is added onto the width of the box.
+
+You can specify different values for each side of a box using:
+* padding-top
+* padding-right
+* padding-bottom
+* padding-left
+
+Or you can use a shorthand (where the values are in clockwise order: top, right, bottom, left):
+```padding: 10px 5px 3px 1px;```
+
+The value of the padding property is not inherited by child elements in the same way that the color value of the font-family property is; so you need to specify the padding for every element that needs to use it.
+
+Up until Internet Explorer 6, the width of the box would include the padding and margins.
+
+### MARGIN
+
+#### ```margin```
+
+![](imgs/ch13 - margin html.jpg)
+![](imgs/ch13 - margin css.jpg)
+![](imgs/ch13 - margin result.jpg) 
+
+The value of the ```margin``` property is not inherited by child elements in the same way that the color value of the font-family property is, so you need to specify the ```margin``` for every element that needs to use it.
+
+Up until Internet Explorer 6, the width of the box would include the padding and margins.
+
+The margin property controls the gap between boxes. Its value is commonly given in pixels, although you may also use percentages or ems.
+
+If one box sits on top of another, margins are collapsed, which means the larger of the two margins will be used and the smaller will be disregarded.
+
+Please note: If the width of a box is specified then the margin is added to the width of the box.
+
+You can specify values for each side of a box using:
+* margin-top
+* margin-right
+* margin-bottom
+* margin-left
+
+You can also use the shorthand (where the values are in clockwise order: top, right, bottom, left):
+```margin: 1px 2px 3px 4px;```
+
+Sometimes you might see the following, which means that the left and right margins should be 10 pixels and the top and bottom margins should be 20 pixels: ```margin: 10px 20px;```
+
+(This same shorthand shown above can also be applied to padding.)
+
+### CENTERING CONTENT
+
+If you want to center a box on the page (or center it inside the element that it sits in), you can set the ```left-margin``` and ```right-margin``` to **auto**.
+
+In order to center a box on the page, you need to set a width for the box (otherwise it will take up the full width of the page).
+
+Once you have specified the width of the box, setting the left and right margins to auto will make the browser put an equal gap on each side of the box. This centers the box on the page (or within the element that the box sits inside).
+
+In order for this to work in older browsers (particularly IE6), the element that the box sits inside should have a ```text-align``` property with its value set to center.
+
+The ```text-align``` property is inherited by child elements. You therefore also need to specify the ```text-align``` property on the centered box if you do not want the text inside it to be centered.
+
+![](imgs/ch13 - centering content html.jpg)
+![](imgs/ch13 - centering content css.jpg)
+![](imgs/ch13 - centering content result.jpg) 
+
+### CHANGE INLINE/BLOCK
+
+#### ```display```
+
+The display property allows you to turn an inline element into a block-level element or vice versa, and can also be used to hide an element from the page.
+
+The values this property can take are:
+
+* **inline** - This causes a block-level element to act like an inline element.
+* **block** - This causes an inline element to act like a block-level element.
+* **inline-block** - This causes a block-level element to flow like an inline element, while retaining other features of a block-level element.
+* **none** - This hides an element from the page. In this case, the element acts as though it is not on the page at all (although a user could still see the content of the box if they used the view source option in their browser).
+
+If you use this property, it is important to note that inline boxes are **not** supposed to create block-level elements.
+
+### HIDING BOXES
+
+#### ```visibility```
+
+The ```visibility``` property allows you to hide boxes from users but It leaves a space where the element would have been.
+This property can take two values:
+
+**hidden** - This hides the element
+
+**visible** - This shows the element.
+
+If the ```visibility``` of an element is set to hidden, a blank space will appear in its place.
+If you do not want a blank space to appear, then you should use the display property with a value of none instead.
+
+### CSS3: BOX SHADOWS
+
+#### ```box-shadow```
+
+![](imgs/ch13 - box shadow css.jpg)
+![](imgs/ch13 - box shadow result.jpg) 
+
+The box-shadow property allows you to add a drop shadow around a box. It works just like the text-shadow property. It must use at least the first of these two values as well as a color:
+
+HORIZONTAL OFFSET
+
+Negative values position the shadow to the left of the box.
+
+VERTICAL OFFSET
+
+Negative values position the shadow to the top of the box.
+
+BLUR DISTANCE
+
+If omitted, the shadow is a solid line like a border.
+
+SPREAD OF SHADOW
+
+If used, a positive value will cause the shadow to expand in all directions, and a negative value will make it contract.
+
+The **```inset```** keyword can also be used before these values to create an inner-shadow.
+
+Chrome, Firefox, and Safari were quick to support this property using the -moz-box-shadow and -webkit-box-shadow properties. These are not in the CSS specification but using them can help this style to work in these browsers.
+
+### CSS3: ROUNDED CORNERS
+
+#### ```border-radius```
+
+CSS3 introduces the ability to create rounded corners on any box, using a property called border-radius. The value indicates the size of the radius in pixels.
+
+Older browsers that do not support this property will show a box with right-angled corners.
+
+The ```-moz-border-radius``` and ```-webkit-border-radius``` properties are not in the CSS specification. However, they are used in some versions of Chrome, Firefox, and Safari to offer early support for this style (and therefore can be used to achieve this effect in more browsers).
+
+You can specify individual values for each corner of a box using:
+* border-top-right-radius
+* border-bottom-right-radius
+* border-bottom-left-radius
+* border-top-left-radius
+
+You can also use a shorthand of these four properties (in clockwise order: top, right, bottom, left). For example:
+```border-radius: 5px, 10px, 5px, 10px;```
+
+### SUMMARY BOXES
+* CSS treats each HTML element as if it has its own box.
+* You can use CSS to control the dimensions of a box.
+* You can also control the borders, margin and padding for each box with CSS.
+* It is possible to hide elements using the display and visibility properties.
+* Block-level boxes can be made into inline boxes, and inline boxes made into block-level boxes.
+* Legibility can be improved by controlling the width of boxes containing text and the leading.
+* CSS3 has introduced the ability to create image borders and rounded borders.
