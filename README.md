@@ -943,3 +943,178 @@ If you come across a CSS bug, you can use your favorite search engine to try and
 * CSS rules usually appear in a separate document, although they may appear within an HTML page.
 
 ##11. COLOR
+
+###FOREGROUND COLOR
+
+####color
+
+The color property allows you to specify the color of text inside an element. You can specify any color in CSS in one of three ways:
+
+####RGB VALUES
+
+These express colors in terms of how much red, green and blue are used to make it up. For example: ```rgb(100,100,90)```
+
+####HEX CODES
+
+These are six-digit codes that represent the amount of red, green and blue in a color, preceded by a pound or hash ```#``` sign. For example: ```#ee3e80```
+
+####COLOR NAMES
+
+There are 147 predefined color names that are recognized by browsers. For example: ```DarkCyan```
+
+###BACKGROUND COLOR
+
+####background-color
+
+CSS treats each HTML element as if it appears in a box, and the background-color property sets the color of the background for that box.
+
+If you do not specify a background color, then the background is transparent.
+
+###UNDERSTANDING COLOR
+
+Every color on a computer screen is created by mixing amounts of red, green, and blue. To find the color you want, you can use a color picker.
+
+The color of every pixel on the screen is expressed in terms of a mix of red, green, and blue – just like on a television screen.
+
+The hex value is provided next to the pound or hash # symbol. There is also a good color picking tool at: http://colorschemedesigner.com
+
+
+####RGB VALUES
+
+Values for red, green, and blue are expressed as numbers between 0 and 255.
+
+**```rgb(102,205,170)```**
+
+This color is made up of the following values:
+* 102 red
+* 205 green
+* 170 blue
+
+####HEX CODES
+Hex values represent values for red, green, and blue in hexadecimal code.
+
+**```#66cdaa```**
+
+The value of the ```red```, ```102```, is expressed as ```66``` in hexadecimal code. The ```205``` of the ```green``` is expressed as ```cd``` and the ```170``` of the ```blue``` equates to ```aa```.
+
+####COLOR NAMES
+Colors are represented by predefined names. However, they are very limited in number.
+
+**```MediumAquaMarine```**
+
+There are 147 color names supported by browsers (this color is MediumAquaMarine). Most consider this to be a limited color palette, and it is hard to remember the name for each of the colors so (apart from white and black) they are not commonly used.
+
+####HUE
+Hue is near to the colloquial idea of color. Technically speaking however, a color can also have saturation and brightness as well as hue.
+
+![](imgs/ch11 - hue.jpg)
+
+####SATURATION
+
+Saturation refers to the **amount of gray** in a color. At maximum saturation, there would be no gray in the color. At minimum saturation, the color would be mostly gray.
+
+![](imgs/ch11 - saturation.jpg)
+
+####BRIGHTNESS
+Brightness (or “value”) refers to **how much black** is in a color. At maximum brightness, there would be no black in the color. At minimum brightness, the color would be very dark.
+
+![](imgs/ch11 - brightness.jpg)
+
+###CONTRAST
+When picking foreground and background colors, it is important to ensure that there is enough contrast for the text to be legible.
+
+![](imgs/ch11 - low contrast.jpg)
+
+**Low Contrast** - Text is harder to read when there is low contrast between background and foreground colors.
+
+![](imgs/ch11 - high contrast.jpg)
+
+**High Contrast** - Text is easier to read when there is higher contrast between background and foreground colors.
+
+If you want people to read a lot of text on your page, however, then too much contrast can make it harder to read, too.
+
+![](imgs/ch11 - medium contrast.jpg)
+
+**Medium Contrast** - For long spans of text, reducing the contrast a little bit improves readability.
+You can reduce contrast by using dark gray text on a white background or an off-white text on a dark background.
+
+**If text is reversed out (a light color on a dark background), you can increase the height between lines and the weight of the font to make it easier to read.**
+
+To check contrast there is a handy online tool at: http://www.snook.ca/technical/colour_contrast/colour.html
+
+###CSS3: OPACITY
+
+**```opacity```, ```rgba```**
+
+![](imgs/ch11 - opacity.jpg)
+![](imgs/ch11 - opacity result.jpg)
+![](imgs/ch11 - opacity result older browsers.jpg)
+
+CSS3 introduces the opacity property which allows you to specify the opacity of an element and any of its child elements. The value is a number between 0.0 and 1.0 (so a value of 0.5 is 50% opacity and 0.15 is 15% opacity).
+
+The CSS3 rgba property allows you to specify a color, just like you would with an RGB value, but adds a fourth value to indicate opacity. This value is known as an **```alpha```** value and is a number between 0.0 and 1.0 (so a value of 0.5 is 50% opacity and 0.15 is 15% opacity). **The rgba value will only affect the element on which it is applied (not child elements)**.
+
+Because some browsers will not recognize RGBA colors, you can offer a fallback so that they display a solid color. If there are two rules that apply to the same element, the latter of the two will take priority. To create the fallback, you can specify a color as a hex code, color name or RGB value, followed by the rule that specifies an RGBA value. If the browser understands RGBA colors it will use that rule. If it doesn't, it will use the RGB value.
+
+At the time of writing, the opacity and rgba properties are only supported by the most recent browsers.
+
+###CSS3: HSL COLORS
+
+CSS3 introduces an entirely new and intuitive way to specify colors using hue, saturation, and lightness values.
+
+####HUE
+
+Hue is the colloquial idea of color. In HSL colors, hue is often represented as a color circle where the angle represents the color, although it may also be shown as a slider with values from 0 to 360.
+
+![](imgs/ch11 - hue circle.jpg)
+
+####SATURATION
+Saturation is the amount of gray in a color. Saturation is represented as a percentage. 100% is full saturation and 0% is a shade of gray.
+
+![](imgs/ch11 - saturation.jpg)
+
+####LIGHTNESS
+Lightness is the amount of white (lightness) or black (darkness) in a color. Lightness is represented as a percentage. 0% lightness is black, 100% lightness is white, and 50% lightness is normal. Lightness is sometimes referred to as *luminosity*
+
+![](imgs/ch11 - lightness.jpg)
+
+**Please note that lightness is a different concept to brightness. Graphic design software (such as Photoshop and GIMP) have color pickers that use hue, saturation, and brightness – but brightness only adds black, whereas lightness offers both white and black.**
+
+###CSS3: HSL & HSLA
+
+**```hsl, hsla```**
+
+![](imgs/ch11 - hsla.jpg)
+![](imgs/ch11 - hsla result.jpg)
+
+Because older browsers do not recognize HSL and HSLA values, it is a good idea to add an extra rule which specifies the color using a hex code, RGB value, or color name. This should appear before the rule that uses the HSL or HSLA value.
+
+This provides a fallback because if there are two rules that apply to the same element in CSS, the latter of the two always takes priority. This means that if the browser understands HSL and HSLA colors, it will use that rule; and if it does not, it will use the first rule.
+
+The ```hsl``` color property has been introduced in CSS3 as an alternative way to specify colors. The value of the property starts with the letters hsl, followed by individual values inside parentheses for:
+
+####HUE
+
+This is expressed as an angle (between 0 and 360 degrees).
+
+####SATURATION
+This is expressed as a percentage.
+
+####LIGHTNESS
+
+This is expressed as a percentage with 0% being white, 50% being normal, and 100% being black.
+
+The ```hsla``` color property allows you to specify color properties using ```hue```, ```saturation```, and ```lightness``` as above, and adds a fourth value which represents transparency (just like the rgba property). The a stands for:
+
+####ALPHA
+This is expressed as a number between 0 and 1.0. For example, 0.5 represents 50% transparency, and 0.75 represents 75% transparency.
+
+###SUMMARY COLOR
+* Color not only brings your site to life, but also helps convey the mood and evokes reactions.
+* There are three ways to specify colors in CSS: RGB values, hex codes, and color names.
+* Color pickers can help you find the color you want.
+* It is important to ensure that there is enough contrast between any text and the background color (otherwise people will not be able to read your content).
+* CSS3 has introduced an extra value for RGB colors to indicate opacity. It is known as RGBA.
+* CSS3 also allows you to specify colors as HSL values, with an optional opacity value. It is known as HSLA.
+
+[Continues](README1.md)
