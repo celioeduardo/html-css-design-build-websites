@@ -811,3 +811,455 @@ You can also use a shorthand of these four properties (in clockwise order: top, 
 * CSS3 has introduced the ability to create image borders and rounded borders.
 
 ## 14. LISTS, TABLES AND FORMS
+
+## 15. LAYOUT
+
+### BUILDING BLOCKS
+CSS treats each HTML element as if it is in its own box. This box will either be a **block-level** box or an **inline** box.
+
+Block-level boxes start on a new line and act as the main building blocks of any layout, while inline boxes flow between surrounding text. You can control how much space each box takes up by setting the width of the boxes (and sometimes the height, too). To separate boxes, you can use borders, margins, padding, and background colors.
+
+#### BLOCK-LEVEL ELEMENTS - START ON A NEW LINE
+
+Examples include:
+```<h1>``` ```<p>``` ```<ul>``` ```<li>```
+
+![](imgs/ch15 - block level elements.jpg)
+
+#### INLINE ELEMENTS FLOW IN BETWEEN SURROUNDING TEXT
+Examples include:
+```<img>``` ```<b>``` ```<i>```
+
+![](imgs/ch15 - inline elements.jpg)
+
+### CONTAINING ELEMENTS
+
+If one block-level element sits inside another block-level element then the outer box is known as the **containing** or **parent** element.
+
+It is common to group a number of elements together inside a ```<div>``` (or other block-level) element. For example, you might group together all of the elements that form the header of a site (such as the logo and the main navigation). The ```<div>``` element that contains this group of elements is then referred to as the **containing** element.
+
+![](imgs/ch15 - containing element.jpg)
+
+A box may be nested inside several other block-level elements. The containing element is always the **direct parent** of that element.
+
+The orange lines in this diagram represent ```<div>``` elements. The header (containing the logo and navigation) are in one ```<div>``` element, the main content of the page is in another, and the footer is in a third. The ```<body>``` element is the containing element for these three ```<div>``` elements. The second ```<div>``` element is the containing element for two paragraphs of Latin text and images (represented by crossed squares)
+
+### CONTROLLING THE POSITION OF ELEMENTS
+
+CSS has the following positioning schemes that allow you to control the layout of a page: **normal flow**, **relative positioning**, and **absolute positioning**. You specify the positioning scheme using the position property in CSS. You can also **float elements** using the ```float``` property.
+
+#### NORMAL FLOW
+Every block-level element appears on a new line, causing each item to appear lower down the page than the previous one. Even if you specify the width of the boxes and there is space for two elements to sit side-by-side, they will not appear next to each other. This is the default behavior (unless you tell the browser to do something else).
+
+![](imgs/ch15 - normal flow.jpg)
+
+The paragraphs appear one after the other, vertically down the page.
+
+#### RELATIVE POSITIONING
+This moves an element from the position it would be in normal flow, shifting it to the top, right, bottom, or left of where it would have been placed. This does not affect the position of surrounding elements; they stay in the position they would be in in normal flow.
+
+![](imgs/ch15 - relative positioning.jpg)
+
+The second paragraph has been pushed down and right from where it would otherwise have been in normal flow. 
+
+#### ABSOLUTE POSITIONING
+
+This positions the element in relation to its containing element. It is taken out of normal flow, meaning that it does not affect the position of any surrounding elements (as they simply ignore the space it would have taken up). Absolutely positioned elements move as users scroll up and down the page.
+
+![](imgs/ch15 - absolute positioning.jpg)
+
+The heading is positioned to the top right, and the paragraphs start at the top of the screen (as if the heading were not there).
+
+To indicate where a box should be positioned, you may also need to use box offset properties to tell the browser how far from the top or bottom and left or right it should be placed. (You will meet these when we introduce the positioning schemes on the following pages.)
+
+#### FIXED POSITIONING
+
+This is a form of absolute positioning that **positions** the element **in relation to** the **browser window**, as opposed to the containing element. Elements with fixed positioning do not affect the position of surrounding elements and they do not move when the user scrolls up or down the page.
+
+![](imgs/ch15 - fixed positioning.jpg)
+
+The heading has been placed in the center of the page and 25% from the top of the screen. (The rest appears in normal flow.)
+
+#### FLOATING ELEMENTS
+Floating an element allows you to take that element out of normal flow and position it to the far left or right of a containing box. The floated element becomes a block-level element around which other content can flow.
+
+![](imgs/ch15 - floating elements.jpg)
+
+The heading has been floated to the left, allowing the paragraphs of text to flow around it.
+
+**When you move any element from normal flow, boxes can overlap**. The ```z-index``` property allows you to control which box appears on top
+
+### NORMAL FLOW
+#### ```position:static```
+In normal flow, each block-level element sits on top of the next one. Since this is the default way in which browsers treat HTML elements, you do not need a CSS property to indicate that elements should appear in normal flow, but the syntax would be:
+
+```position: static;```
+
+I have not specified a width property for the heading element, so you can see how it stretches the width of the entire browser window by default.
+
+The paragraphs are restricted to 450 pixels wide. This shows how the elements in normal flow start on a new line even if they do not take up the full width of the browser window.
+
+![](imgs/ch15 - normal flow html.jpg)
+![](imgs/ch15 - normal flow css.jpg)
+![](imgs/ch15 - normal flow result.jpg)
+
+### RELATIVE POSITIONING
+#### ```position:relative```
+Relative positioning moves an element in relation to where it would have been in normal flow.
+
+For example, you can move it 10 pixels lower than it would have been in normal flow or 20% to the right.
+
+You can indicate that an element should be relatively positioned using the position property with a value of ```relative```.
+
+You then use the offset properties (```top``` or ```bottom``` and ```left``` or ```right```) to indicate how far to move the element from where it would have been in normal flow.
+
+To move the box up or down, you can use either the ```top``` or ```bottom``` properties.
+
+To move the box horizontally, you can use either the ```left``` or ```right``` properties.
+
+The values of the box offset properties are usually given in pixels, percentages or ems.
+
+![](imgs/ch15 - position relative html.jpg)
+![](imgs/ch15 - position relative css.jpg)
+![](imgs/ch15 - position relative result.jpg)
+
+### ABSOLUTE POSITIONING
+#### ```position:absolute```
+
+When the ```position```property is given a value of absolute, the box is taken out of normal flow and no longer affects the position of other elements on the page. (They act like it is not there.)
+
+The **box offset properties** (```top``` or ```bottom``` and ```left``` or ```right```) specify where the element should appear in relation to its containing element.
+
+In this example, the heading has been positioned at the top of the page and 500 pixels from its left edge. The width of the heading is set to be 250 pixels wide.
+
+The ```width``` property has also been applied to the ```<p>``` elements in this example to prevent the text from overlapping and becoming unreadable.
+
+By default, most browsers add a margin to the top of the ```<h1>``` element. This is why there is a gap between the top of the browser and the box containing the ```<h1>``` element. If you wanted to remove this margin, you could add the following code to the ```<h1>``` element's style rules:
+
+```margin: 0px;```
+
+![](imgs/ch15 - position absolute html.jpg)
+![](imgs/ch15 - position absolute css.jpg)
+![](imgs/ch15 - position absolute result.jpg)
+
+### FIXED POSITIONING
+#### ```position:fixed```
+
+Fixed positioning is a type of absolute positioning that requires the ```position``` property to have a value of ```fixed```.
+
+It positions the element in relation to the browser window. Therefore, when a user scrolls down the page, it stays in the exact same place. 
+
+To control where the fixed position box appears in relation to the browser window, the **box offset properties** are used.
+
+In this example, the heading has been positioned to the top left hand corner of the browser window. When the user scrolls down the page, the paragraphs disappear behind the heading.
+
+The ```<p>``` elements are in normal flow and ignore the space that the ```<h1>``` element would have taken up. Therefore, the margin-top property has been used to push the first ```<p>``` element below where the fixed position ```<h1>``` element is sitting.
+
+![](imgs/ch15 - position fixed html.jpg)
+![](imgs/ch15 - position fixed css.jpg)
+![](imgs/ch15 - position fixed result.jpg)
+
+### OVERLAPPING ELEMENTS
+#### ```z-index```
+
+When you use **relative**, **fixed**, or **absolute** positioning, boxes can overlap. If boxes do overlap, the elements that appear later in the HTML code sit on top of those that are earlier in the page.
+
+If you want to control which element sits on top, you can use the z-index property. Its value is a number, and the higher the number the closer that element is to the front. For example, an element with a z-index of 10 will appear over the top of one with a z-index of 5.
+
+This example looks similar to the FIXED POSITIONING, but it uses relative positioning for the ```<p>``` elements. Because the paragraphs are relatively positioned, by default they would appear over the top of the heading as the user scrolls down the page. To ensure that the ```<h1>``` element stays on top, we use the z-index property on the rule for the ```<h1>``` element.
+
+![](imgs/ch15 - z-index css.jpg)
+![](imgs/ch15 - z-index result without z-index.jpg)
+![](imgs/ch15 - z-index result with z-index.jpg)
+
+### FLOATING ELEMENTS
+#### ```float```
+
+The float property allows you to take an element in normal flow and place it as far to the **left** or **right** of the containing element as possible.
+
+Anything else that sits inside the containing element will flow around the element that is floated.
+
+When you use the float property, **you should also use the ```width``` property** to indicate how wide the floated element should be. If you do not, results can be inconsistent but the box is likely to take up the full width of the containing element (just like it would in normal flow).
+
+In this example, a ```<blockquote>``` element is used to hold a quotation. It's containing element is the ```<body>``` element.
+
+The ```<blockquote>``` element is floated to the right, and the paragraphs that follow the quote flow around the floated element.
+
+![](imgs/ch15 - float html.jpg)
+![](imgs/ch15 - float css.jpg)
+![](imgs/ch15 - float result.jpg)
+
+### USING FLOAT TO PLACE ELEMENTS SIDE-BY-SIDE
+
+A lot of layouts place boxes next to each other. The ```float``` property is commonly used to achieve this.
+
+When elements are floated, the height of the boxes can affect where the following elements sit.
+
+In this example, you can see six paragraphs, each of which has a ```width``` and a ```float``` property set.
+
+The fourth paragraph does not go across to the left hand edge of the page as one might expect. Rather it sits right under the third paragraph.
+
+The reason for this is that the fourth paragraph has space to start under the third paragraph, but it cannot go any further to the left because the second paragraph is in the way.
+
+Setting the height of the paragraphs to be the same height as the tallest paragraph would solve this issue, but it is rarely suited to real world designs where the amount of text in a paragraph or column may vary. It is more common to use the ```clear``` property (discussed futher) to solve this issue.
+
+![](imgs/ch15 - using float html.jpg)
+![](imgs/ch15 - using float css.jpg)
+![](imgs/ch15 - using float result.jpg)
+
+### CLEARING FLOATS
+#### ```clear```
+
+The ```clear``` property allows you to say that no element (within the same containing element) should touch the left or right-hand sides of a box. It can take the following values:
+
+* **```left```** - The left-hand side of the box should not touch any other elements appearing in the same containing element.
+* **```right```** - The right-hand side of the box will not touch elements appearing in the same containing element.
+* **```both```** - Neither the left nor right-hand sides of the box will touch elements appearing in the same containing element.
+* **```none```** - Elements can touch either side.
+
+In this example, the fourth paragraph has a class called ```clear```. The CSS rule for this class uses the clear property to indicate that nothing should touch the left-hand side of it. The fourth paragraph is therefore moved further down the page so no other element touches its left-hand side.
+
+![](imgs/ch15 - clear html.jpg)
+![](imgs/ch15 - clear css.jpg)
+![](imgs/ch15 - clear result.jpg)
+
+### PARENTS OF FLOATED ELEMENTS: PROBLEM
+
+If a containing element *only* contains floated elements, some browsers will treat it as if it is zero pixels tall.
+
+As you can see in this example, the one pixel border assigned to the containing element has collapsed, so the box looks like a two pixel line.
+
+![](imgs/ch15 - float-problem html.jpg)
+![](imgs/ch15 - float-problem css.jpg)
+![](imgs/ch15 - float-problem result.jpg)
+
+### PARENTS OF FLOATED ELEMENTS: SOLUTION
+
+Traditionally, developers got around this problem by adding an extra element after the last floated box (inside the containing element). A CSS rule would be applied to this additional element setting the ```clear``` property to have a value of both. But this meant that an extra element was added to the HTML just to fix the height of the containing element.
+
+More recently, developers have opted for a purely CSS-based solution because it means that there is no need to add an extra element to the HTML page after the floated elements. The pure CSS solution adds two CSS rules to the containing element (in this example the ```<div>``` element):
+
+* The ```overflow``` property is given a value auto.
+* The ```width``` property is set to 100%.
+
+### CREATING MULTI-COLUMN LAYOUTS WITH FLOATS
+
+Many web pages use multiple columns in their design. This is achieved by using a ```<div>``` element to represent each column. The following three CSS properties are used to position the columns next to each other:
+
+* **```width```** - This sets the width of the columns.
+* **```float```** - This positions the columns next to each other.
+* **```margin```** - This creates a gap between the columns.
+
+A two-column layout like the one shown on this page would need two ```<div>``` elements, one for the main content of the page and one for the sidebar.
+
+Inside each of the ```<div>``` elements there can be headings, paragraphs, images, and even other ```<div>``` elements.
+
+![](imgs/ch15 - columns-two html.jpg)
+![](imgs/ch15 - columns-two css.jpg)
+![](imgs/ch15 - columns-two result.jpg)
+
+Similarly, a three column layout could be created by floating three ```<div>``` elements next to each other, as shown on this page.
+
+![](imgs/ch15 - columns-three html.jpg)
+![](imgs/ch15 - columns-three css.jpg)
+![](imgs/ch15 - columns-three result.jpg)
+
+### SCREEN SIZES
+
+Different visitors to your site will have different sized screens that show different amounts of information, so your design needs to be able to work on a range of different sized screens.
+
+Designing for the web, you are faced with the unique challenge that different users will have different sized screens.
+
+### SCREEN RESOLUTION
+
+Resolution refers to the **number of dots a screen shows per inch**. Some devices have a higher resolution than desktop computers and most operating systems allow users to adjust the resolution of their screens.
+
+**13″ MacBook**
+* Size: 13.3 inches
+* Resolution: 1280 × 800 pixels
+
+**27″ iMac**
+* Size: 27 inches
+* Resolution: 2560 × 1440 pixels
+
+Most computers will allow owners to adjust the resolution of the display or the number of pixels that are shown on the screen. 
+
+It is interesting to note that **the higher the resolution, the smaller the text appears**. Many mobile devices have screens that are higher resolution than their desktop counterparts.
+
+### PAGE SIZES
+
+Because screen sizes and display resolutions vary so much, web designers often try to create pages of around 960-1000 pixels wide (since most users will be able to see designs this wide on their screens).
+
+Judging the height that people are likely to see on the screen without scrolling down the page is much harder. For several years, designers assumed that users would see the top 570-600 pixels of a page without having to scroll and some tried to fit all of the key messages in this area (fearing that people would not scroll down the page).
+
+As screen sizes have increased and handheld devices have become more popular, the area users will see is far more variable.
+
+The area of the page that users would see without scrolling was often referred as being **“above the fold”** (a term newspapers had originally coined to describe the area of the front page you would see if the paper were folded in half).
+
+It is now recognized that if someone is interested in the content of the page, they are likely to scroll down to see more. Having said which, usability studies have shown that visitors can judge a page in under a second so it is still important to let new visitors know that the site is relevant to them and their interests.
+
+As a result, many designs still try to let the user know what the site is about within the top 570-600 pixels, as well as hint at more content below this point. But do not try to cram too much into that top area.
+
+At the time of writing, there was a growing trend for people to create adaptive or responsive designs that could change depending on the size of the screen.
+
+The shaded area is hidden by the constraints of the browser window, so the user must scroll in order to view the lower region.
+
+However, the user gets a taste for what is lower on the page and can tell that there will be more to see if they scroll down.
+
+![](imgs/ch15 - flickr.jpg)
+
+### FIXED WIDTH LAYOUTS
+
+Fixed width layout designs do not change size as the user increases or decreases the size of their browser window. Measurements tend to be given in pixels.
+
+![](imgs/ch15 - fixed width layout.jpg)
+
+**ADVANTAGES**
+* Pixel values are accurate at controlling size and positioning of elements.
+* The designer has far greater control over the appearance and position of items on the page than with liquid layouts.
+* You can control the lengths of lines of text regardless of the size of the user's window.
+* The size of an image will always remain the same relative to the rest of the page.
+
+**DISADVANTAGES**
+* You can end up with big gaps around the edge of a page.
+* If the user's screen is a much higher resolution than the designer's screen, the page can look smaller and text can be harder to read.
+* If a user increases font sizes, text might not fit into the allotted spaces.
+* The design works best on devices that have a site or resolution similar to that of desktop or laptop computers.
+* The page will often take up more vertical space than a liquid layout with the same content.
+
+### LIQUID LAYOUTS
+
+Liquid layout designs stretch and contract as the user increases or decreases the size of their browser window. They tend to use percentages.
+
+Because liquid layouts can stretch the entire width of the browser, resulting in long lines of text that are hard to read, some liquid layouts only let part of the page expand and contract. Other parts of the page have minimum and maximum widths.
+
+![](imgs/ch15 - liquid layout.jpg)
+
+**ADVANTAGES**
+* Pages expand to fill the entire browser window so there are no spaces around the page on a large screen.
+* If the user has a small window, the page can contract to fit it without the user having to scroll to the side.
+* The design is tolerant of users setting font sizes larger than the designer intended (because the page can stretch).
+
+**DISADVANTAGES**
+* If you do not control the width of sections of the page then the design can look very different than you intended, with unexpected gaps around certain elements or items squashed together.
+* If the user has a wide window, lines of text can become very long, which makes them harder to read.
+* If the user has a very narrow window, words may be squashed and you can end up with few words on each line.
+* If a fixed width item (such as an image) is in a box that is too small to hold it (because the user has made the window smaller) the image can overflow over the text.
+
+### A FIXED WIDTH LAYOUT
+
+To create a fixed width layout, the width of the main boxes on a page will usually be specified in pixels (and sometimes their height, too).
+
+Here you can see several ```<div>``` elements, each of which uses an ```id``` or ```class``` attribute to indicate its purpose on the page.
+
+In a book, the result of both the fixed and liquid layouts look similar. To get a real feel for them, you need to view them in your browser and see how they react when you adjust the size of the browser window.
+
+The fixed width layout will stay the same width no matter what size the browser window is, whereas the liquid layout will stretch (or shrink) to fill the screen.
+
+![](imgs/ch15 - fixed width layout html.jpg)
+![](imgs/ch15 - fixed width layout css.jpg)
+![](imgs/ch15 - fixed width layout result.jpg)
+
+The rule for the ```<body>``` element is used to fix the width of the page at 960 pixels, and it is centered by setting the left and right margins to auto.
+
+The main boxes on the page have a margin of 10 pixels to create a gap between them.
+
+The navigation, feature, and footer panels stretch to the width of the containing element (which in this instance is the ```<body>``` element), so we do not need to specify a width for them.
+
+The three columns are each 300 pixels wide and use the float property, which allows them to sit next to each other.
+
+Sometimes an extra HTML element is used to contain the page, rather than fixing the width of the ```<body>```. This allows the background of the browser window to have a different color than the background of the content.
+
+### A LIQUID LAYOUT
+
+The liquid layout uses percentages to specify the width of each box so that the design will stretch to fit the size of the screen.
+When trying this in your browser, remember to make the window smaller and larger.
+
+![](imgs/ch15 - liquid layout html.jpg)
+![](imgs/ch15 - liquid layout css.jpg)
+![](imgs/ch15 - liquid layout result.jpg)
+
+There is a rule on the ```<body>``` element to set the width of the page to 90% so that there is a small gap between the left and right-hand sides of the browser window and the main content.
+
+The three columns are all given a margin of 1% and a width of 31.3%. This adds up to 99.9% of the width of the ```<body>``` element, so some browsers might not perfectly align the right-hand side of the third column with other elements on the page.
+
+The ```<div>``` elements that hold the navigation, feature, and footer will stretch to fill the width of the containing ```<body>``` element. They are given a 1% margin to help them align with the columns.
+
+If you imagine the browser window to be very wide or very narrow, you can see how lines of text could become very long or very short.
+
+This is where the ```min-width``` and ```max-width``` properties help create boundaries within which the layout can stretch.
+
+### LAYOUT GRIDS
+
+Composition in any visual art (such as design, painting, or photography) is the placement or arrangement of visual elements — how they are organized on a page. Many designers use a grid structure to help them position items on a page, and the same is true for web designers.
+
+You can see a set of thick vertical lines superimposed over the top of a newspaper website to show you how the page was designed according to a grid. This grid is called the **960 pixel grid** and is widely used by web designers.
+
+![](imgs/ch15 - example grid.jpg)
+
+Grids set consistent proportions and spaces between items which helps to create a professional looking design.
+
+It is possible to create many different layouts using this one versatile grid.
+
+While a grid might seem like a restriction, in actual fact it:
+* Creates a continuity between different pages which may use different designs
+* Helps users predict where to find information on various pages
+* Makes it easier to add new content to the site in a consistent way
+* Helps people collaborate on the design of a site in a consistent way
+
+### POSSIBLE LAYOUTS: 960 PIXEL WIDE 12 COLUMN GRID
+
+These two pictures illustrate a 960 pixel wide, 12 column grid. They demonstrate how it is possible to create a wide range of column layouts using this one grid.
+
+![](imgs/ch15 - possible grid layouts.jpg)
+
+The page is 960 pixels wide and there are 12 equal sized columns (shown in gray), each of which is is 60 pixels wide.
+
+Each column has a margin set to 10 pixels, which creates a a gap of 20 pixels between each column and 10 pixels to the left and right-hand sides of the page.
+
+![](imgs/ch15 - possible grid layouts 2.jpg)
+
+### CSS FRAMEWORKS
+
+CSS frameworks aim to make your life easier by providing the code for common tasks, such as creating layout grids, styling forms, creating printer-friendly versions of pages and so on. You can include the CSS framework code in your projects rather than writing the CSS from scratch.
+
+**ADVANTAGES**
+* They save you from repeatedly writing code for the same tasks.
+* They will have been tested across different browser versions (which helps avoid browser bugs).
+
+**DISADVANTAGES**
+* They often require that you use class names in your HTML code that only control the presentation of the page (rather than describe its content).
+* In order to satisfy a wide variety of needs, they often contain more code than you need for your particular web page (commonly referred to as code “bloat”).
+
+### MULTIPLE STYLE SHEETS
+
+#### **```@import```**
+
+Some web page authors split up their CSS style rules into separate style sheets. For example, they might use one style sheet to control the layout and another to control fonts, colors and so on.
+
+Some authors take an even more modular approach to stylesheets, creating separate stylesheets to control typography, layout, forms, tables, even different styles for each sub-section of a site.
+
+There are two ways to add multiple style sheets to a page:
+* Your HTML page can link to one style sheet and that stylesheet can use the @import rule to import other style sheets.
+* In the HTML you can use a separate ```<link>``` element for each style sheet.
+
+The example on this page uses one ```<link>``` element in the HTML to link to a style sheet called styles.css. This stylesheet then uses the ```@import``` rule to import the typography.css and tables.css files.
+
+If a styesheet uses the @import rule, it should appear before the other rules.
+
+![](imgs/ch15 - multiple style sheets import html.jpg)
+![](imgs/ch15 - multiple style sheets import css.jpg)
+
+### SUMMARY LAYOUT
+* ```<div>``` elements are often used as containing elements to group together sections of a page.
+* Browsers display pages in normal flow unless you specify relative, absolute, or fixed positioning.
+* The float property moves content to the left or right of the page and can be used to create multi-column layouts. (Floated items require a defined width.)
+* Pages can be fixed width or liquid (stretchy) layouts.
+* Designers keep pages within 960-1000 pixels wide, and indicate what the site is about within the top 600 pixels (to demonstrate its relevance without scrolling).
+* Grids help create professional and flexible designs.
+* CSS Frameworks provide rules for common tasks.
+* You can include multiple CSS files in one page.
+
+## 16. IMAGES
+
+
